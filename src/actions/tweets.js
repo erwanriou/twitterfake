@@ -12,19 +12,12 @@ function addTweet (tweet) {
   }
 }
 
-export function handleAddTweet (text, replyingTo) {
-  return (dispatch, getState) => {
-    const { authedUser } = getState()
-
-    dispatch(showLoading())
-
-    return saveTweet({
-      text,
-      author: authedUser,
-      replyingTo
-    })
-      .then((tweet) => dispatch(addTweet(tweet)))
-      .then(() => dispatch(hideLoading()))
+function toggleTweet ({ id, authedUser, hasLiked }) {
+  return {
+    type: TOGGLE_TWEET,
+    id,
+    authedUser,
+    hasLiked
   }
 }
 
@@ -32,15 +25,6 @@ export function receiveTweets (tweets) {
   return {
     type: RECEIVE_TWEETS,
     tweets,
-  }
-}
-
-function toggleTweet ({ id, authedUser, hasLiked }) {
-  return {
-    type: TOGGLE_TWEET,
-    id,
-    authedUser,
-    hasLiked
   }
 }
 
@@ -54,5 +38,21 @@ export function handleToggleTweet (info) {
         dispatch(toggleTweet(info))
         alert('The was an error liking the tweet. Try again.')
       })
+  }
+}
+
+export function handleAddTweet (text, replyingTo) {
+  return (dispatch, getState) => {
+    const { authedUser } = getState()
+
+    dispatch(showLoading())
+
+    return saveTweet({
+      text,
+      author: authedUser,
+      replyingTo
+    })
+      .then((tweet) => dispatch(addTweet(tweet)))
+      .then(() => dispatch(hideLoading()))
   }
 }

@@ -26,13 +26,10 @@ class Tweet extends React.Component {
 
   render() {
     const {tweet, users, authedUser} = this.props
-    const { name, avatar, timestamp, text, hasLiked, likes, replies, parent } = tweet
-
     if (tweet === null) {
       return <p>This Tweet doesn't exist</p>
     }
-
-
+    const { name, avatar, timestamp, text, hasLiked, likes, replies, parent } = tweet
     return (
       <div className='tweet'>
         <img
