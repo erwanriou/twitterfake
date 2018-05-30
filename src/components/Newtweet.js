@@ -9,9 +9,7 @@ class NewTweet extends Component {
   handleChange = (e) => {
     const text = e.target.value
 
-    this.setState(() => ({
-      text
-    }))
+    this.setState(() => ({ text }))
   }
   handleSubmit = (e) => {
     e.preventDefault()
@@ -21,9 +19,7 @@ class NewTweet extends Component {
 
     dispatch(handleAddTweet(text, id))
 
-    this.setState(() => ({
-      text: ''
-    }))
+    this.setState(() => ({ text: '' }))
   }
   render() {
     const { text } = this.state
@@ -35,7 +31,9 @@ class NewTweet extends Component {
     return (
       <div>
         <h3 className='center'>Compose new Tweet</h3>
-        <form className='new-tweet' onSubmit={this.handleSubmit}>
+        <form
+          className='new-tweet'
+          onSubmit={this.handleSubmit}>
           <textarea
             placeholder="What's happening?"
             value={text}
