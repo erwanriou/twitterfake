@@ -1,4 +1,4 @@
-To lunch the application : 
+To run the application : 
 
 open your terminal on the top of the current folder
 npm install
